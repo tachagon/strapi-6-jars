@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jars",
+  "info": {
+    "singularName": "jar",
+    "pluralName": "jars",
+    "displayName": "Jar"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "color": {
+      "type": "string",
+      "default": "#FFFFFF"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "jars"
+    },
+    "transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::transaction.transaction",
+      "mappedBy": "jar"
+    }
+  }
+}
